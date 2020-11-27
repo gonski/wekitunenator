@@ -93,10 +93,10 @@ void drawPoseNetParts(JSONObject data){
       println("leftDist ", leftDist);
       float rightDist = pow(pow(rightHand[0] - nose[0],2) + pow(rightHand[1] - nose[1],2),0.5);
       println("rightDist ", rightDist);
+      
       circle(nose[0],nose[1],10);
       circle(rightHand[0],rightHand[1],10);
       circle(leftHand[0],leftHand[1],10);
-
     }
   }
 }
