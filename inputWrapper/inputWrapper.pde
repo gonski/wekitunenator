@@ -37,12 +37,12 @@ JSONObject data;
 
 void setup(){
   // match sketch size to default model camera setup
-  size(600,400);
-  // change default black stroke
-  stroke(9,130,250);
-  strokeWeight(3);
+  size(800,700);
   // setup Runway
   runway = new RunwayOSC(this);
+
+text( "Press 'c' to connect to Runway. Press 'c' to disconnect.", 5, 15 );
+  
   
   // midi to OSC
   MidiBus.list();
@@ -111,9 +111,11 @@ private int nextY() {
 
 void draw(){
   background(0);
-  fill(255);
+  fill(0,255,0);
   // manually draw PoseNet parts
   drawPoseNetParts(data);
+  text( "Press 'c' to connect to Runway. Press 'd' to disconnect.", 5, height-15 );
+
 }
 
 void drawPoseNetParts(JSONObject data){
@@ -136,13 +138,19 @@ void drawPoseNetParts(JSONObject data){
       rightHand[1] = keypoints.getJSONArray(ModelUtils.POSE_RIGHT_WRIST_INDEX).getFloat(1) * height;
       
       float leftDist = pow(pow(leftHand[0] - nose[0],2) + pow(leftHand[1] - nose[1],2),0.5);
-      println("leftDist ", leftDist);
       float rightDist = pow(pow(rightHand[0] - nose[0],2) + pow(rightHand[1] - nose[1],2),0.5);
-      println("rightDist ", rightDist);
       
       circle(nose[0],nose[1],10);
+      text( "nose", nose[0],nose[1] );
       circle(rightHand[0],rightHand[1],10);
+      text( "right hand", rightHand[0],rightHand[1] );
       circle(leftHand[0],leftHand[1],10);
+      text( "left hand", leftHand[0],leftHand[1] );
+      
+      text( "leftDist " + round(leftDist), 5, height-30 );
+      text( "rightDist " + round(rightDist), 5,height-45 );
+
+
     }
   }
 }
