@@ -38,9 +38,8 @@ RunwayOSC runway;
 // This array will hold all the humans detected
 JSONObject data;
 
-// This are the pair of body connections we want to form. 
-// Try creating new ones!
-int[][] connections = {
+// Pose names
+/*
   {ModelUtils.POSE_NOSE_INDEX, ModelUtils.POSE_LEFT_EYE_INDEX},
   {ModelUtils.POSE_LEFT_EYE_INDEX, ModelUtils.POSE_LEFT_EAR_INDEX},
   {ModelUtils.POSE_NOSE_INDEX,ModelUtils.POSE_RIGHT_EYE_INDEX},
@@ -53,7 +52,7 @@ int[][] connections = {
   {ModelUtils.POSE_RIGHT_KNEE_INDEX,ModelUtils.POSE_RIGHT_ANKLE_INDEX},
   {ModelUtils.POSE_LEFT_HIP_INDEX,ModelUtils.POSE_LEFT_KNEE_INDEX},
   {ModelUtils.POSE_LEFT_KNEE_INDEX,ModelUtils.POSE_LEFT_ANKLE_INDEX}
-};
+*/
 
 void setup(){
   // match sketch size to default model camera setup
@@ -77,19 +76,27 @@ void drawPoseNetParts(JSONObject data){
     JSONArray humans = data.getJSONArray("poses");
     for(int h = 0; h < humans.size(); h++) {
       JSONArray keypoints = humans.getJSONArray(h);
-      // Now that we have one human, let's draw its body parts
-      for(int i = 0 ; i < connections.length; i++){
-        
-        JSONArray startPart = keypoints.getJSONArray(connections[i][0]);
-        JSONArray endPart   = keypoints.getJSONArray(connections[i][1]);
-        // extract floats fron JSON array and scale normalized value to sketch size
-        float startX = startPart.getFloat(0) * width;
-        float startY = startPart.getFloat(1) * height;
-        float endX   = endPart.getFloat(0) * width;
-        float endY   = endPart.getFloat(1) * height;
-        
-        line(startX,startY,endX,endY);
-      }
+      
+      float[] nose = new float[2]; // in order to compute hand-head distance
+      nose[0] = width - keypoints.getJSONArray(ModelUtils.POSE_NOSE_INDEX).getFloat(0) * width; // in order to invert image
+      nose[1] = keypoints.getJSONArray(ModelUtils.POSE_NOSE_INDEX).getFloat(1) * height;
+      
+      float[] leftHand = new float[2];
+      leftHand[0] = width - keypoints.getJSONArray(ModelUtils.POSE_LEFT_WRIST_INDEX).getFloat(0) * width;
+      leftHand[1] = keypoints.getJSONArray(ModelUtils.POSE_LEFT_WRIST_INDEX).getFloat(1) * height;
+      
+      float[] rightHand = new float[2];
+      rightHand[0] = width - keypoints.getJSONArray(ModelUtils.POSE_RIGHT_WRIST_INDEX).getFloat(0) * width;
+      rightHand[1] = keypoints.getJSONArray(ModelUtils.POSE_RIGHT_WRIST_INDEX).getFloat(1) * height;
+      
+      float leftDist = pow(pow(leftHand[0] - nose[0],2) + pow(leftHand[1] - nose[1],2),0.5);
+      println("leftDist ", leftDist);
+      float rightDist = pow(pow(rightHand[0] - nose[0],2) + pow(rightHand[1] - nose[1],2),0.5);
+      println("rightDist ", rightDist);
+      circle(nose[0],nose[1],10);
+      circle(rightHand[0],rightHand[1],10);
+      circle(leftHand[0],leftHand[1],10);
+
     }
   }
 }
