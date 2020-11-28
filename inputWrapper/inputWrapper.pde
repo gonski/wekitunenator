@@ -48,7 +48,7 @@ text( "Press 'c' to connect to Runway. Press 'c' to disconnect.", 5, 15 );
   MidiBus.list();
   
   osc = new OscP5(this, 8001);
-  loc = new NetAddress("127.0.0.1", 8000);
+  loc = new NetAddress("127.0.0.1", 8000); // wekinator input port
   osc.plug(this, "oscToMidiNote", "/midi/note");
   osc.plug(this, "oscToMidiCC", "/midi/cc");
   
@@ -114,7 +114,7 @@ void draw(){
   fill(0,255,0);
   // manually draw PoseNet parts
   drawPoseNetParts(data);
-  text( "Press 'c' to connect to Runway. Press 'd' to disconnect.", 5, height-15 );
+  text( "press 'c' to connect to Runway. press 'd' to disconnect.", 15, height-15 );
 
 }
 
@@ -147,10 +147,10 @@ void drawPoseNetParts(JSONObject data){
       circle(leftHand[0],leftHand[1],10);
       text( "left hand", leftHand[0],leftHand[1] );
       
-      text( "leftDist " + round(leftDist), 5, height-30 );
-      text( "rightDist " + round(rightDist), 5,height-45 );
+      text( "left hand to nose distance:  " + round(leftDist) + " px", 15, height-30 );
+      text( "right hand to nose distance: " + round(rightDist) + " px", 15,height-45 );
 
-
+    sendOscToWekinator(leftDist,rightDist) ;
     }
   }
 }
@@ -189,6 +189,7 @@ void keyPressed(){
 
 
 
+
 public void Update() {
   if (midi != null) {
     midi.clearAll();
@@ -197,43 +198,6 @@ public void Update() {
   midi.sendNoteOn(0, 44, 127);
 }
 
-// OSC -> MIDI
-
-public void oscToMidiNote(int note, int value) {
-  log("Got OSC Note: " + note + " Velocity: " + value); 
-  midi.sendNoteOn(0, note, value);
-}
-
-public void oscToMidiCC(int control, int value) {
-  log("Got OSC CC: " + control + " Value: " + value);
-   midi.sendControllerChange(0, control, value);
-}
-
-// MIDI -> OSC
-
-void noteOn(int channel, int pitch, int velocity) {
-  log("Got MIDI Note On: " + pitch + " Velocity: " + velocity);
-  OscMessage msg = new OscMessage("/midi/note");
-  msg.add(pitch);
-  msg.add(velocity);
-  osc.send(msg, loc);
-}
-
-void noteOff(int channel, int pitch, int velocity) {
-  log("Got MIDI Note Off: " + pitch + " Velocity: " + velocity);
-  OscMessage msg = new OscMessage("/midi/note");
-  msg.add(pitch);
-  msg.add(velocity);
-  osc.send(msg, loc);
-}
-
-void controllerChange(int channel, int number, int value) {
-  log("Got MIDI CC: " + number + " Velocity: " + value);
-  OscMessage msg = new OscMessage("/midi/note");
-  msg.add(number);
-  msg.add(value);
-  osc.send(msg, loc);
-}
 
 private void log(String msg) {
   println("Debug: " + msg);
