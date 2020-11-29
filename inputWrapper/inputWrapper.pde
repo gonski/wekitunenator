@@ -14,6 +14,8 @@ DropdownList midiInDropdown, midiOutDropdown;
 Textarea logArea;
 OscP5 osc;
 NetAddress loc;
+Button[] btns = new Button[5];
+
 
 
 // This array will hold all the humans detected
@@ -26,9 +28,6 @@ void setup() {
   // setup Runway
   runway = new RunwayOSC(this);
 
-  text( "Press 'c' to connect to Runway. Press 'c' to disconnect.", 5, 15 );
-
-
   // midi to OSC
   MidiBus.list();
 
@@ -37,14 +36,27 @@ void setup() {
   osc.plug(this, "oscToMidiNote", "/midi/note");
   osc.plug(this, "oscToMidiCC", "/midi/cc");
 
+
+  midi = new MidiBus(this, 0, 1);
+  cp5 = new ControlP5(this);
   drawMidiOSCMenu();
+  drawFXbtns();
 }
 
 void draw() {
   background(0);
   fill(0, 255, 0);
-  // manually draw PoseNet parts
+  println(btns[0].getValue());
+
+  // get hand to nose distances
   float[] dist = drawPoseNetParts(data);
-  sendOscToWekinator(dist[0], dist[1]);
+
+  //get midiFX status
+
+
+
+  if (dist!=null) {
+    sendOscToWekinator(dist[0], dist[1]);
+  }
   text( "press 'c' to connect to Runway. press 'd' to disconnect.", 15, height-15 );
 }
