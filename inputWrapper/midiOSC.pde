@@ -43,9 +43,6 @@ void drawMidiOSCMenu() {
 
   int menuWidth = 100;
 
-  midi = new MidiBus(this, 0, 1);
-  cp5 = new ControlP5(this);
-
   cp5.addTextfield("inputPort")
     .setPosition(20, nextY())
     .setSize(menuWidth, 20)
