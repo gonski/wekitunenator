@@ -10,56 +10,6 @@ public void oscToMidiCC(int control, int value) {
   midi.sendControllerChange(0, control, value);
 }
 
-// MIDI -> OSC
-// now it only works WHILE pressed
-
-void noteOn(int channel, int pitch, int velocity) {
-
-  for (int i=0; i<midiFX.length; i++) {
-    if (midiFX[i] == pitch) {
-      if (btns[i].getState()) {
-        btns[i].setState(false);
-      } else {
-        btns[i].setState(true);
-      }
-      println("FXbtn " + btns[i].getState(), btns[i].getMode());
-    }
-  }
-
-
-  log("Got MIDI Note On: " + pitch + " Velocity: " + velocity);
-  OscMessage msg = new OscMessage("/midi/note");
-  msg.add(pitch);
-  msg.add(velocity);
-  osc.send(msg, loc);
-}
-
-/* only using notes for control
- void noteOff(int channel, int pitch, int velocity) {
- 
- for (int i=0; i<midiFX.length; i++){
- if (midiFX[i] == pitch) {
- println("FXbtn" + i + " off");
- btns[i].setOff();
- }
- }
- 
- log("Got MIDI Note Off: " + pitch + " Velocity: " + velocity);
- OscMessage msg = new OscMessage("/midi/note");
- msg.add(pitch);
- msg.add(velocity);
- osc.send(msg, loc);
- }
- 
- */
-void controllerChange(int channel, int number, int value) {
-  log("Got MIDI CC: " + number + " Velocity: " + value);
-  OscMessage msg = new OscMessage("/midi/note");
-  msg.add(number);
-  msg.add(value);
-  osc.send(msg, loc);
-}
-
 
 // Menu
 

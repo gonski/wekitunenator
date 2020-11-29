@@ -30,5 +30,16 @@ void drawFXbtns() {
     .setSize(btnWidth, btnWidth);
 }
 
+void noteOn(int channel, int pitch, int velocity) {
 
-// midi 0, 1, 2, 3, 4 change btns value
+  for (int i=0; i<midiFX.length; i++) {
+    if (midiFX[i] == pitch) {
+      if (btns[i].getState()) {
+        btns[i].setState(false);
+      } else {
+        btns[i].setState(true);
+      }
+      println("FXbtn " + btns[i].getState(), btns[i].getMode());
+    }
+  }
+}
