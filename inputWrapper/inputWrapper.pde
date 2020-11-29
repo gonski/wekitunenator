@@ -14,8 +14,8 @@ DropdownList midiInDropdown, midiOutDropdown;
 Textarea logArea;
 OscP5 osc;
 NetAddress loc;
-Button[] btns = new Button[5];
-
+Toggle[] btns = new Toggle[5];
+int[] midiFX = {0, 1, 2, 3, 4};
 
 
 // This array will hold all the humans detected
@@ -56,7 +56,7 @@ void draw() {
 
 
   if (dist!=null) {
-    sendOscToWekinator(dist[0], dist[1]);
+    sendOscToWekinator(round(dist[0]), round(dist[1]));
   }
   text( "press 'c' to connect to Runway. press 'd' to disconnect.", 15, height-15 );
 }
