@@ -46,7 +46,7 @@ void setup() {
 void draw() {
   background(0);
   fill(0, 255, 0);
-  println(btns[0].getValue());
+  //println(btns[0].isOn());
 
   // get hand to nose distances
   float[] dist = drawPoseNetParts(data);

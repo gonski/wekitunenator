@@ -13,6 +13,10 @@ public void oscToMidiCC(int control, int value) {
 // MIDI -> OSC
 
 void noteOn(int channel, int pitch, int velocity) {
+  
+  int[] midiFX = {0,1,2,3,4};
+  
+  
   log("Got MIDI Note On: " + pitch + " Velocity: " + velocity);
   OscMessage msg = new OscMessage("/midi/note");
   msg.add(pitch);

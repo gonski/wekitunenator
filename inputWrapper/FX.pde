@@ -1,11 +1,8 @@
-
-
 void drawFXbtns() {
 
   int btnWidth = 50;
   float x1 = width/3;
   int y = 20;
-
 
   btns[0] = cp5.addButton("FX1")
     .setValue(0)
@@ -32,3 +29,6 @@ void drawFXbtns() {
     .setPosition(x1+ 4*(2 + btnWidth), y)
     .setSize(btnWidth, btnWidth);
 }
+
+
+// midi 0, 1, 2, 3, 4 change btns value
