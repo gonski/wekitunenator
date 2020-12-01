@@ -9,7 +9,6 @@ In order to obtain a good real-time performance you should modify the default bu
 <div style="text-align:center"><img src="./.bin/buffer.png"/></div>
 
 ## Setting up OSC control 
-Copy and paste `Processing.ReaperOSC` file to your OSC Reaper path (usually `/Users/username/Library/Application Support/REAPER/OSC`). Once you've done that: 
 * Go to `Preferences>Control/OSC/web`. Then click on the `Add` button.
 <div style="text-align:center"><img src="./.bin/reaper_preferences.png"/></div>
 
