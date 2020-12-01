@@ -1,8 +1,12 @@
 # Reaper configuration 
-You may need to modify your audio device input/output configuration `Preferences>Audio>Device`
+You may need to modify your audio device input/output configuration `Preferences>Audio>Device`.
 
 ## Install FXs
 Download and install Graillon 2 Live Changer free edition [here](https://www.auburnsounds.com/products/Graillon.html), in order to have auto-tune.
+
+## Buffer size
+In order to obtain a good real-time performance you should modify the default buffer size in `REAPER>Preferences>Audio>Device`. Check the `Request block size` box and set it to 128. You may need a larger size if you hear clicks, it depends on your computer.
+<div style="text-align:center"><img src="./.bin/buffer.png"/></div>
 
 ## Setting up OSC control 
 Copy and paste `Processing.ReaperOSC` file to your OSC Reaper path (usually `/Users/username/Library/Application Support/REAPER/OSC`). Once you've done that: 
