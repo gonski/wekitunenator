@@ -32,19 +32,7 @@ void draw() {
 }
 
 void sendOsc(OscMessage msgWek) {
-  // Two approaches possible: 
   // 1. directly modify specific param values (as many wek ouputs as param values)
-  // 2. modify selecting effect number, param number and then value (3 wek outputs)
-  // Right now implemented: approach 1
-  
-  //// Select fx
-  //Integer fxNum = msgWek.get(0).intValue();
-  //OscMessage msgFx = new OscMessage("/fx/number/str"); 
-  //msgFx.add(fxNum); 
-  //oscP5.send(msgFx, dest);
-  
-  //// Select param
-  //Integer paramNum = msgWek.get(1).intValue();
   
   // Modify 2 effects
   OscMessage msg1 = new OscMessage("/track/1/fx/1/fxparam/8/value"); //autotune amount
