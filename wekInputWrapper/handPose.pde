@@ -11,24 +11,32 @@
 
 
 void oscEvent(OscMessage msg) {
-msg.print();
   if (msg.checkAddrPattern("/landmarks")==true) {
-    for (int i=0; i<21; i++) {
-      for (int j=0; j<3; j++) {
-        points[i][j] = msg.get(i+j).floatValue(); 
+
+    int k = -1;
+    for (int i=0; i<3*21; i++) {
+      if (i%3 == 0) {
+        k++;
       }
+      points[k][i%3] = msg.get(i).floatValue();
     }
   }
-
 }
 
 void computeOutputs() {
-  for (int i=0; i<3; i++){
-  origin[i] = points[0][i];
+  for (int i=0; i<3; i++) {
+    origin[i] = points[0][i];
   }
   for (int i=1; i<21; i++) { //first is origin
-    dist[i-1] = pow(pow(origin[0] - points[i][0],2) + pow(origin[1] - points[i][1],2) 
-    + pow(origin[2] - points[i][2],2),0.5);
+    dist[i-1] = pow(pow(origin[0] - points[i][0], 2) + pow(origin[1] - points[i][1], 2)
+      + pow(origin[2] - points[i][2], 2), 0.5);
   }
+}
 
+void drawPoints() {
+
+  for (int i=0; i<21; i++) {
+    circle(width-points[i][0], points[i][1], 5);
+    text(i, width-points[i][0], points[i][1]);
+  }
 }

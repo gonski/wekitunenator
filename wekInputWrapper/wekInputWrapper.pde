@@ -30,7 +30,7 @@ int outputPort = 8000;
 void setup() {
   // match sketch size to default model camera setup
   size(800, 700);
-  
+
   // midi to OSC
   MidiBus.list();
 
@@ -41,7 +41,7 @@ void setup() {
   midi = new MidiBus(this, 0, 1);
   cp5 = new ControlP5(this);
 
- drawMidiOSCMenu();
+  drawMidiOSCMenu();
   drawFXbtns();
 }
 
@@ -49,12 +49,7 @@ void draw() {
   background(0);
   fill(0, 255, 0);
 
-    computeOutputs();
-    
-    for (int i=0; i<points.length;i++){
-      circle(points[i][0],points[i][1],10);
-    }
-    sendOscToWekinator();
-
-  text( "press 'c' to connect to Runway. press 'd' to disconnect.", 15, height-15 );
+  computeOutputs();
+  drawPoints();
+  sendOscToWekinator();
 }
