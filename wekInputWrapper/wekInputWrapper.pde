@@ -14,8 +14,13 @@ OscP5 osc;
 NetAddress loc;
 
 // FX btns
-Toggle[] btns = new Toggle[5];
-int[] midiFX = {0, 1, 2, 3, 4};
+Toggle[] FXBtns = new Toggle[5];
+int[] midiFX = {0, 1, 2, 3, 4}; // pitch idx
+
+//wek training btns
+Toggle[] TrainingBtns = new Toggle[6];
+int[] midiTraining = {5, 6, 7, 8, 9,10}; // pitch idx
+
 
 //handPose
 float[][] points = new float[21][3];
@@ -43,6 +48,7 @@ void setup() {
 
   drawMidiOSCMenu();
   drawFXbtns();
+  drawTrainingBtns();
 }
 
 void draw() {
