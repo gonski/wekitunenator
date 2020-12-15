@@ -11,7 +11,7 @@ void sendInputOscToWekinator() {
   }
 
   for (int i=0; i<midiFX.length; i++) {
-    float state = FXBtns[i].getState() ? 1 : 0;
+    float state = FXBtns[i].getState() ? 1 : 0; // send in order
     msg.add((float)state);
   }
 
@@ -21,6 +21,34 @@ void sendInputOscToWekinator() {
 
 
 void sendTrainingOscToWekinator() {
-OscMessage msg = new OscMessage("/wek/");
-// to do
+  OscMessage msg = new OscMessage("/wek/control");
+  for (int i=0; i<midiFX.length; i++) {
+    if (TrainingBtns[i].getState()) {    // to improve
+      switch(i) {
+      case 0:
+        msg.setAddrPattern("/wekinator/control/startRecording");
+        break;
+      case 1:
+        msg.setAddrPattern("/wekinator/control/stopRecording");
+        break;
+      case 2:
+        msg.setAddrPattern("/wekinator/control/train");
+        break;
+      case 3:
+        msg.setAddrPattern("/wekinator/control/cancelTrain");
+        break;
+      case 4:
+        msg.setAddrPattern("/wekinator/control/startRunning");
+        break;
+      case 5:
+        msg.setAddrPattern("/wekinator/control/stopRunning");
+        break;
+      }
+    }
+
+  osc.send(msg, loc);
+  }
+
+
+  // to do
 }
