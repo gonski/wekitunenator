@@ -1,6 +1,15 @@
 # wekitunenator
-Final project for the Advanced Interface Design course at UPF
+Authors: Gonzalo Nieto [@GoniGit](https://github.com/GoniGit) and Teresa Pelinski [@pelinski](https://github.com/pelinski).
+Wekitunenator 3000 is our final project for the Advanced Interface Design master module at Universitat Pompeu Fabra. In this project...., we built an instrument 
+* modifies voice by appliying some FXs
+* it is controlled with fingers and hand positions and gestures. 
+* FXs spaces (Fiebrink paper)
+* go beyond a control paradigm and use ML as an exploratory tool
+
 [project description + reference paper]
+
+(video link)
+
 
 ## Setup
 [simplified pipeline]
