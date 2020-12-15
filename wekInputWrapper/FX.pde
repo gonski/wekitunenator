@@ -42,4 +42,5 @@ void noteOn(int channel, int pitch, int velocity) {
       println("FXbtn " + btns[i].getState(), btns[i].getMode());
     }
   }
+  sendOSCtoReaper();
 }

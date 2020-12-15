@@ -79,13 +79,13 @@ void sendOsc(OscMessage msgWek) {
   oscP5.send(bypass2, dest);
   if(msgWek.get(2).floatValue()==1){
     //Dry amount: /track/1/fx/2/fxparam/2/value range:0-1
-    OscMessage glitcherDry = new OscMessage("/track/1/fx/1/fxparam/2/value");
+    OscMessage glitcherDry = new OscMessage("/track/1/fx/2/fxparam/2/value");
     glitcherDry.add(msgWek.get(3).floatValue()); 
     oscP5.send(glitcherDry, dest);
     //Shift (full range): /track/1/fx/2/fxparam/4/value range:0.25/1
     OscMessage glitcherShift = new OscMessage("/track/1/fx/2/fxparam/4/value");
     glitcherShift.add(map(msgWek.get(4).floatValue(), 0, 1, 0.25, 1)); 
-    oscP5.send(glitcherDry, dest);
+    oscP5.send(glitcherShift, dest);
   }
   
   //3. Reverse
@@ -107,15 +107,15 @@ void sendOsc(OscMessage msgWek) {
   oscP5.send(bypass4, dest);
   if(msgWek.get(7).floatValue()==1){
     //Wet amount: /track/1/fx/4/fxparam/1/value range:0-1
-    OscMessage delayWet = new OscMessage("//track/1/fx/4/fxparam/1/value");
+    OscMessage delayWet = new OscMessage("/track/1/fx/4/fxparam/1/value");
     delayWet.add(msgWek.get(8).floatValue()); 
     oscP5.send(delayWet, dest);
     //Length (musical): /track/1/fx/4/fxparam/5/value range:0-0.0390625
-    OscMessage delayLength = new OscMessage("//track/1/fx/4/fxparam/5/value");
+    OscMessage delayLength = new OscMessage("/track/1/fx/4/fxparam/5/value");
     delayLength.add(map(msgWek.get(9).floatValue(), 0, 1, 0, 0.0390625)); 
     oscP5.send(delayLength, dest);
     //Feedback: /track/1/fx/4/fxparam/6/value range:0-0.55791545
-    OscMessage delayFb = new OscMessage("//track/1/fx/4/fxparam/6/value");
+    OscMessage delayFb = new OscMessage("/track/1/fx/4/fxparam/6/value");
     delayFb.add(map(msgWek.get(10).floatValue(), 0, 1, 0, 0.55791545)); 
     oscP5.send(delayFb, dest);
   }
