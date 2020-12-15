@@ -1,4 +1,5 @@
 // OSC -> MIDI
+// from https://github.com/msfeldstein/MidiToOSCBridge/blob/master/MidiOSC.pde
 
 public void oscToMidiNote(int note, int value) {
   log("Got OSC Note: " + note + " Velocity: " + value);
