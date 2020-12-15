@@ -1,4 +1,4 @@
-void sendOscToWekinator() {
+void sendInputOscToWekinator() {
   OscMessage msg = new OscMessage("/wek/inputs");
 
   // only x, y
@@ -21,6 +21,6 @@ void sendOscToWekinator() {
 
 
 void sendTrainingOscToWekinator() {
-OscMessage msg = new OscMessage("/wek/inputs");
+OscMessage msg = new OscMessage("/wek/");
 // to do
 }
