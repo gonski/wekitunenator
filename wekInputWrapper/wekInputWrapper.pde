@@ -57,5 +57,5 @@ void draw() {
 
   computeOutputs();
   drawPoints();
-  sendOscToWekinator();
+  sendInputOscToWekinator();
 }
