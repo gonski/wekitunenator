@@ -24,8 +24,7 @@ void sendTrainingOscToWekinator() {
   OscMessage msg = new OscMessage("/");
   for (int i=0; i<midiTraining.length; i++) {
     if (lastTrainingBtnValue[i] != TrainingBtns[i].getState()) {
-      println("sending message",i, TrainingBtns[i].getState());
-      if (TrainingBtns[i].getState()) {    // to improve
+      if (TrainingBtns[i].getState()) {    
         switch(i) {
         case 0:
           msg.setAddrPattern("/wekinator/control/startRecording");

@@ -18,7 +18,4 @@ void drawTrainingBtns() {
     .setValue(false)
     .setPosition(x1 +2*(2 + btnWidth), y)
     .setSize(btnWidth, btnWidth);
-    
-
-
 }

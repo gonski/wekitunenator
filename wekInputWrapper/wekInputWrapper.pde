@@ -28,7 +28,7 @@ int[] midiTraining = {5, 6, 7}; // pitch idx
 float[][] points = new float[21][3];
 float[] origin = new float[3];
 float[] dist = new float [20];
-boolean[] lastTrainingBtnValue = {false,false,false};
+boolean[] lastTrainingBtnValue = {false, false, false};
 
 int inputPort = 8008;
 int outputPort = 8000;

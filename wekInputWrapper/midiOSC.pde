@@ -110,10 +110,10 @@ void noteOn(int channel, int pitch, int velocity) {
   }
 
 
-  
-  
+
+
   //Training
-    for (int i=0; i<midiTraining.length; i++) {
+  for (int i=0; i<midiTraining.length; i++) {
     if (midiTraining[i] == pitch) {
       if (TrainingBtns[i].getState()) {
         TrainingBtns[i].setState(false);
@@ -122,5 +122,4 @@ void noteOn(int channel, int pitch, int velocity) {
       }
     }
   }
-
 }
