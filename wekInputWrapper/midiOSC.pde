@@ -36,10 +36,10 @@ void drawMidiOSCMenu() {
     .setPosition(20, nextY())
     .setSize(menuWidth, 50);
 
-  
+
   midiOutDropdown = cp5.addDropdownList("midiOut")
-   .setPosition(20, nextY())
-   .setSize(menuWidth, 50);
+    .setPosition(20, nextY())
+    .setSize(menuWidth, 50);
 
   String[] inputs = MidiBus.availableInputs();
   for (int i = 0; i < inputs.length; i++) {
@@ -108,16 +108,15 @@ void noteOn(int channel, int pitch, int velocity) {
       println("FX " + i + " " + FXBtns[i].getState());
     }
   }
-  
+
+
   // Training
-    for (int i=0; i<midiTraining.length; i++) {
+  for (int i=0; i<midiTraining.length; i++) {
     if (midiTraining[i] == pitch) {
-      if (TrainingBtns[i].getState()) {
-        TrainingBtns[i].setState(false);
-      } else {
-        TrainingBtns[i].setState(true);
-      }
-      println("Training " + i + " " + TrainingBtns[i].getState());
+
+      TrainingBtns[i].setOn();
+
+      println("Training " + i + " " );
     }
   }
 }

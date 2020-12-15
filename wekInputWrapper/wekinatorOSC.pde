@@ -21,9 +21,11 @@ void sendInputOscToWekinator() {
 
 
 void sendTrainingOscToWekinator() {
-  OscMessage msg = new OscMessage("/wek/control");
-  for (int i=0; i<midiFX.length; i++) {
-    if (TrainingBtns[i].getState()) {    // to improve
+  OscMessage msg = new OscMessage("/");
+  for (int i=0; i<midiTraining.length; i++) {
+    if (TrainingBtns[i].isOn()) {    // to improve
+      TrainingBtns[i].setOff();
+      println(i, "ison");
       switch(i) {
       case 0:
         msg.setAddrPattern("/wekinator/control/startRecording");
@@ -45,10 +47,6 @@ void sendTrainingOscToWekinator() {
         break;
       }
     }
-
-  osc.send(msg, loc);
+    osc.send(msg, loc);
   }
-
-
-  // to do
 }
