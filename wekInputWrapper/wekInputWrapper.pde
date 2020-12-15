@@ -58,4 +58,5 @@ void draw() {
   computeOutputs();
   drawPoints();
   sendInputOscToWekinator();
+  sendTrainingOscToWekinator();
 }
