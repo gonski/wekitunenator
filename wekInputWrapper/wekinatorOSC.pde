@@ -23,30 +23,36 @@ void sendInputOscToWekinator() {
 void sendTrainingOscToWekinator() {
   OscMessage msg = new OscMessage("/");
   for (int i=0; i<midiTraining.length; i++) {
-    if (TrainingBtns[i].isOn()) {    // to improve
-      TrainingBtns[i].setOff();
-      println(i, "ison");
-      switch(i) {
-      case 0:
-        msg.setAddrPattern("/wekinator/control/startRecording");
-        break;
-      case 1:
-        msg.setAddrPattern("/wekinator/control/stopRecording");
-        break;
-      case 2:
-        msg.setAddrPattern("/wekinator/control/train");
-        break;
-      case 3:
-        msg.setAddrPattern("/wekinator/control/cancelTrain");
-        break;
-      case 4:
-        msg.setAddrPattern("/wekinator/control/startRunning");
-        break;
-      case 5:
-        msg.setAddrPattern("/wekinator/control/stopRunning");
-        break;
+    if (lastTrainingBtnValue[i] != TrainingBtns[i].getState()) {
+      println("sending message",i, TrainingBtns[i].getState());
+      if (TrainingBtns[i].getState()) {    // to improve
+        switch(i) {
+        case 0:
+          msg.setAddrPattern("/wekinator/control/startRecording");
+          break;
+        case 1:
+          msg.setAddrPattern("/wekinator/control/train");
+          break;
+        case 2:
+          msg.setAddrPattern("/wekinator/control/startRunning");
+          break;
+        }
+      } else {
+        switch(i) {
+        case 0:
+          msg.setAddrPattern("/wekinator/control/stopRecording");
+          break;
+        case 1:
+          msg.setAddrPattern("/wekinator/control/cancelTrain");
+          break;
+        case 2:
+          msg.setAddrPattern("/wekinator/control/stopRunning");
+          break;
+        }
       }
     }
+
+    lastTrainingBtnValue[i]= TrainingBtns[i].getState();
     osc.send(msg, loc);
   }
 }
