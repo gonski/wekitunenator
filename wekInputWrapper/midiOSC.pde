@@ -1,4 +1,5 @@
 // OSC -> MIDI
+// from https://github.com/msfeldstein/MidiToOSCBridge/blob/master/MidiOSC.pde
 
 public void oscToMidiNote(int note, int value) {
   log("Got OSC Note: " + note + " Velocity: " + value);
@@ -17,29 +18,13 @@ void drawMidiOSCMenu() {
 
   int menuWidth = 100;
 
-  /*
-  cp5.addTextfield("inputPort")
-   .setPosition(20, nextY())
-   .setSize(menuWidth, 20)
-   .setValue("8000")
-   .setAutoClear(false);
-   
-   cp5.addTextfield("outputPort")
-   .setPosition(20, nextY())
-   .setSize(menuWidth, 20)
-   .setValue("8001")
-   .setAutoClear(false);
-   */
-
-
   midiInDropdown = cp5.addDropdownList("midiIn")
     .setPosition(20, nextY())
     .setSize(menuWidth, 50);
 
-  
   midiOutDropdown = cp5.addDropdownList("midiOut")
-   .setPosition(20, nextY())
-   .setSize(menuWidth, 50);
+    .setPosition(20, nextY())
+    .setSize(menuWidth, 50);
 
   String[] inputs = MidiBus.availableInputs();
   for (int i = 0; i < inputs.length; i++) {
