@@ -1,6 +1,3 @@
-// using code from  RunwayML PoseNetFull Example and
-// from https://github.com/msfeldstein/MidiToOSCBridge/blob/master/MidiOSC.pde
-
 import oscP5.*;
 import netP5.*;
 import themidibus.*;
