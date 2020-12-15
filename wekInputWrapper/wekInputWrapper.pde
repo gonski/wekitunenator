@@ -18,9 +18,7 @@ Toggle[] FXBtns = new Toggle[5];
 int[] midiFX = {0, 1, 2, 3, 4}; // pitch idx
 
 //wek training btns
-//Button[] TrainingBtns = new Button[6];
 Toggle[] TrainingBtns = new Toggle[6];
-//int[] midiTraining = {5, 6, 7, 8, 9, 10}; // pitch idx
 int[] midiTraining = {5, 6, 7}; // pitch idx
 
 
