@@ -42,10 +42,15 @@ void setup() {
   midi = new MidiBus(this, 0, 1);
   cp5 = new ControlP5(this);
 
+  // autorun Handpose
+  // launch("local full path to HandPose-OSC.app");
+
+
   drawMidiOSCMenu();
   drawFXbtns();
   drawTrainingBtns();
 }
+
 
 void draw() {
   background(0);
