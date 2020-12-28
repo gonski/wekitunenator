@@ -56,6 +56,20 @@ void sendTrainingOscToWekinator() {
   }
 }
 
+void sendOutputOscToWekinator() {
+  OscMessage msg = new OscMessage("/wekinator/control/outputs");
+  
+   for (int i=0; i<FXBtns.length; i++) {
+    msg.add((float)FXBtns[i].getValue());
+  }
+  
+  for (int i=0; i<knobCCs.length; i++) {
+    msg.add((float)knobVal[i]);
+  }
+  println(msg);
+  osc.send(msg, wekAddr); // total 5 FX  + 20 dist + 2 xy origin = 27
+}
+
 
 
 void sendOscWek2Reaper(OscMessage msgWek) {
@@ -86,7 +100,7 @@ void sendOscWek2Reaper(OscMessage msgWek) {
    **/
   // Directly modify specific param values (as many wek ouputs as param values)
 
-  ////1. Autotune
+  ////1. Autotunegit a
   //Bypass: /track/1/fx/1/bypass 0/1
   OscMessage bypass1 = new OscMessage("/track/1/fx/1/bypass");
   bypass1.add(msgWek.get(0).floatValue());

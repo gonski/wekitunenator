@@ -30,8 +30,9 @@ void controllerChange(int channel, int number, int value) {
   for (int i=0; i<knobCCs.length; i++) {
     if (knobCCs[i] == number) {
       knobVal[i]=map(value, 0, 127, 0, 1);
-      println("Knob " + i + " " + knobVal[i]);
+      //println("Knob " + i + " " + knobVal[i]);
     }
   }
   sendOscMidi2Reaper();
+  sendOutputOscToWekinator();
 }

@@ -1,5 +1,5 @@
 void drawMidiMenu() {
-// from https://github.com/msfeldstein/MidiToOSCBridge/blob/master/MidiOSC.pde
+  // from https://github.com/msfeldstein/MidiToOSCBridge/blob/master/MidiOSC.pde
 
   int menuWidth = 100;
 
@@ -115,11 +115,14 @@ void drawTrainingBtns() {
 void controlEvent(ControlEvent theEvent) {
   // If the event is called FX*, then send OSC to Reaper
   // Could be done also for knobs if we create Knob controllers for them
-  try{
-    if (theEvent.getName().startsWith("FX")){
+  try {
+    if (theEvent.getName().startsWith("FX")) {
       //maybe add: if(TrainingToggle==true)
       sendOscMidi2Reaper();
+      sendOutputOscToWekinator();
     }
-  // throws some exceptions at the beginning but then works fine, the catch block is to avoid these exceptions
-  } catch(NullPointerException e){} 
+    // throws some exceptions at the beginning but then works fine, the catch block is to avoid these exceptions
+  }
+  catch(NullPointerException e) {
+  }
 }
