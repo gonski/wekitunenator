@@ -66,7 +66,6 @@ void sendOutputOscToWekinator() {
   for (int i=0; i<knobCCs.length; i++) {
     msg.add((float)knobVal[i]);
   }
-  println(msg);
   osc.send(msg, wekAddr); // total 5 FX  + 20 dist + 2 xy origin = 27
 }
 
