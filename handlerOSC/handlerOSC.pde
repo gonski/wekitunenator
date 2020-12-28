@@ -23,7 +23,9 @@ int[] midiTraining = {5, 6, 7}; // pitch idx
 
 // Training knobs
 float[] knobVal = new float[9];
-int[] knobCCs = {75, 76, 92, 95, 10, 2, 12, 13, 7}; // Gon's controller CCs
+//int[] knobCCs = {75, 76, 92, 95, 10, 2, 12, 13, 7}; // MIDIcontroller1 CCs
+int[] knobCCs = {48,49,50,51,52,53,54,55}; // MIDIcontroller2 CCs
+
 
 //handPose
 float[][] points = new float[21][3];

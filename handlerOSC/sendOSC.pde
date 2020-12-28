@@ -67,7 +67,6 @@ void sendOscWek2Reaper(OscMessage msgWek) {
    
    2. Glitcher
    Bypass: /track/1/fx/2/bypass 0/1
-   Dry amount: /track/1/fx/2/fxparam/2/value range:0-1
    Shift (full range): /track/1/fx/2/fxparam/4/value range:0.25/1
    
    3. Reverse
@@ -105,13 +104,9 @@ void sendOscWek2Reaper(OscMessage msgWek) {
   bypass2.add(msgWek.get(1).floatValue());
   osc.send(bypass2, reaperAddr);
   if (msgWek.get(1).floatValue()==1) {
-    //Dry amount: /track/1/fx/2/fxparam/2/value range:0-1
-    OscMessage glitcherDry = new OscMessage("/track/1/fx/2/fxparam/2/value");
-    glitcherDry.add(msgWek.get(6).floatValue());
-    osc.send(glitcherDry, reaperAddr);
     //Shift (full range): /track/1/fx/2/fxparam/4/value range:0.25/1
     OscMessage glitcherShift = new OscMessage("/track/1/fx/2/fxparam/4/value");
-    glitcherShift.add(map(msgWek.get(7).floatValue(), 0, 1, 0.25, 1));
+    glitcherShift.add(map(msgWek.get(6).floatValue(), 0, 1, 0.25, 1));
     osc.send(glitcherShift, reaperAddr);
   }
 
@@ -123,7 +118,7 @@ void sendOscWek2Reaper(OscMessage msgWek) {
   if (msgWek.get(2).floatValue()==1) {
     //Wet amount: /track/1/fx/3/fxparam/1/value range:0-1
     OscMessage reverseWet = new OscMessage("/track/1/fx/3/fxparam/1/value");
-    reverseWet.add(msgWek.get(8).floatValue());
+    reverseWet.add(msgWek.get(7).floatValue());
     osc.send(reverseWet, reaperAddr);
   }
 
@@ -135,15 +130,15 @@ void sendOscWek2Reaper(OscMessage msgWek) {
   if (msgWek.get(3).floatValue()==1) {
     //Wet amount: /track/1/fx/4/fxparam/1/value range:0-1
     OscMessage delayWet = new OscMessage("/track/1/fx/4/fxparam/1/value");
-    delayWet.add(msgWek.get(9).floatValue());
+    delayWet.add(msgWek.get(8).floatValue());
     osc.send(delayWet, reaperAddr);
     //Length (musical): /track/1/fx/4/fxparam/5/value range:0-0.0390625
     OscMessage delayLength = new OscMessage("/track/1/fx/4/fxparam/5/value");
-    delayLength.add(map(msgWek.get(10).floatValue(), 0, 1, 0, 0.0390625));
+    delayLength.add(map(msgWek.get(9).floatValue(), 0, 1, 0, 0.0390625));
     osc.send(delayLength, reaperAddr);
     //Feedback: /track/1/fx/4/fxparam/6/value range:0-0.55791545
     OscMessage delayFb = new OscMessage("/track/1/fx/4/fxparam/6/value");
-    delayFb.add(map(msgWek.get(11).floatValue(), 0, 1, 0, 0.55791545));
+    delayFb.add(map(msgWek.get(10).floatValue(), 0, 1, 0, 0.55791545));
     osc.send(delayFb, reaperAddr);
   }
 
@@ -155,11 +150,11 @@ void sendOscWek2Reaper(OscMessage msgWek) {
   if (msgWek.get(4).floatValue()==1) {
     //Wet amount: /track/1/fx/5/fxparam/1/value range:0-1
     OscMessage reverbWet = new OscMessage("/track/1/fx/5/fxparam/1/value");
-    reverbWet.add(msgWek.get(12).floatValue());
+    reverbWet.add(msgWek.get(11).floatValue());
     osc.send(reverbWet, reaperAddr);
     //Room size: /track/1/fx/5/fxparam/3/value range:0-1
     OscMessage reverbSize = new OscMessage("/track/1/fx/5/fxparam/3/value");
-    reverbSize.add(msgWek.get(13).floatValue());
+    reverbSize.add(msgWek.get(12).floatValue());
     osc.send(reverbSize, reaperAddr);
   }
 }
@@ -181,13 +176,9 @@ void sendOscMidi2Reaper() {
   bypass2.add(FXBtns[1].getValue());
   osc.send(bypass2, reaperAddr);
   if (FXBtns[1].getState()) {
-    //Dry amount
-    OscMessage glitcherDry = new OscMessage("/track/1/fx/2/fxparam/2/value");
-    glitcherDry.add(knobVal[1]);
-    osc.send(glitcherDry, reaperAddr);
     //Shift (full range)
     OscMessage glitcherShift = new OscMessage("/track/1/fx/2/fxparam/4/value");
-    glitcherShift.add(map(knobVal[2], 0, 1, 0.25, 1));
+    glitcherShift.add(map(knobVal[1], 0, 1, 0.25, 1));
     osc.send(glitcherShift, reaperAddr);
   }
 
@@ -198,7 +189,7 @@ void sendOscMidi2Reaper() {
   if (FXBtns[2].getState()) {
     //Wet amount: /track/1/fx/3/fxparam/1/value range:0-1
     OscMessage reverseWet = new OscMessage("/track/1/fx/3/fxparam/1/value");
-    reverseWet.add(knobVal[3]);
+    reverseWet.add(knobVal[2]);
     osc.send(reverseWet, reaperAddr);
   }
 
@@ -209,15 +200,15 @@ void sendOscMidi2Reaper() {
   if (FXBtns[3].getState()) {
     //Wet amount
     OscMessage delayWet = new OscMessage("/track/1/fx/4/fxparam/1/value");
-    delayWet.add(knobVal[4]);
+    delayWet.add(knobVal[3]);
     osc.send(delayWet, reaperAddr);
     //Length (musical)
     OscMessage delayLength = new OscMessage("/track/1/fx/4/fxparam/5/value");
-    delayLength.add(map(knobVal[5], 0, 1, 0, 0.0390625));
+    delayLength.add(map(knobVal[4], 0, 1, 0, 0.0390625));
     osc.send(delayLength, reaperAddr);
     //Feedback
     OscMessage delayFb = new OscMessage("/track/1/fx/4/fxparam/6/value");
-    delayFb.add(map(knobVal[6], 0, 1, 0, 0.55791545));
+    delayFb.add(map(knobVal[5], 0, 1, 0, 0.55791545));
     osc.send(delayFb, reaperAddr);
   }
 
@@ -228,11 +219,11 @@ void sendOscMidi2Reaper() {
   if (FXBtns[4].getState()) {
     //Wet amount
     OscMessage reverbWet = new OscMessage("/track/1/fx/5/fxparam/1/value");
-    reverbWet.add(knobVal[7]);
+    reverbWet.add(knobVal[6]);
     osc.send(reverbWet, reaperAddr);
     //Room size
     OscMessage reverbSize = new OscMessage("/track/1/fx/5/fxparam/3/value");
-    reverbSize.add(knobVal[8]);
+    reverbSize.add(knobVal[7]);
     osc.send(reverbSize, reaperAddr);
   }
 }

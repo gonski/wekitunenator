@@ -91,7 +91,7 @@ void drawTrainingBtns() {
 
   int btnWidth = 50;
   float x1 = width/2-btnWidth-20;
-  int y = height- btnWidth - 20;
+  int y = height- btnWidth - 30;
 
   TrainingBtns[0] = cp5.addToggle("rec")
     .setValue(false)
