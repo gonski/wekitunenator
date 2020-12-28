@@ -30,18 +30,13 @@
 @attribute inputs-25 numeric
 @attribute inputs-26 numeric
 @attribute inputs-27 numeric
-@attribute outputs-1 numeric
-@attribute outputs-2 numeric
-@attribute outputs-3 numeric
-@attribute outputs-4 numeric
-@attribute outputs-5 numeric
-@attribute outputs-6 numeric
-@attribute outputs-7 numeric
-@attribute outputs-8 numeric
-@attribute outputs-9 numeric
-@attribute outputs-10 numeric
-@attribute outputs-11 numeric
-@attribute outputs-12 numeric
-@attribute outputs-13 numeric
+@attribute fx1-autotune-scales numeric
+@attribute fx2-glitcher-shift numeric
+@attribute fx3-reverse-wet numeric
+@attribute fx4-delay-wet numeric
+@attribute fx4-delay-length numeric
+@attribute fx4-delay-feedback numeric
+@attribute fx5-reverb-wet numeric
+@attribute fx5-reverb-room numeric
 
 @data
