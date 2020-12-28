@@ -9,20 +9,6 @@
  
  */
 
-
-void oscEvent(OscMessage msg) {
-  if (msg.checkAddrPattern("/landmarks")==true) {
-
-    int k = -1;
-    for (int i=0; i<3*21; i++) {
-      if (i%3 == 0) {
-        k++;
-      }
-      points[k][i%3] = msg.get(i).floatValue();
-    }
-  }
-}
-
 void computeOutputs() {
   for (int i=0; i<3; i++) {
     origin[i] = points[0][i];

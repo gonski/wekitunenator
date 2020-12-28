@@ -8,11 +8,8 @@ void noteOn(int channel, int pitch, int velocity) {
       } else {
         FXBtns[i].setState(true);
       }
-      println("FX " + i + " " + FXBtns[i].getState());
     }
   }
-
-
 
 
   //Training
@@ -25,4 +22,16 @@ void noteOn(int channel, int pitch, int velocity) {
       }
     }
   }
+}
+
+// Get knobs MIDI
+void controllerChange(int channel, int number, int value) {
+  //println("Got MIDI CC: " + number + " Velocity: " + value);
+  for (int i=0; i<knobCCs.length; i++) {
+    if (knobCCs[i] == number) {
+      knobVal[i]=map(value, 0, 127, 0, 1);
+      println("Knob " + i + " " + knobVal[i]);
+    }
+  }
+  sendOscMidi2Reaper();
 }
