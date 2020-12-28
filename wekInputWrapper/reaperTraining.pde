@@ -13,9 +13,9 @@ void controllerChange(int channel, int number, int value) {
 void sendOSCtoReaper(){
   ////1. Autotune
   OscMessage bypass1 = new OscMessage("/track/1/fx/1/bypass");
-  bypass1.add(btns[0].getValue()); 
+  bypass1.add(FXBtns[0].getValue()); 
   osc.send(bypass1, dst);
-  if(btns[0].getState()){
+  if(FXBtns[0].getState()){
     //Presets (scales)
     OscMessage autotunePresets = new OscMessage("/track/1/fx/1/fxparam/2/value");
     autotunePresets.add(map(knobVal[0], 0, 1, 0.027777778, 0.3611111)); 
@@ -24,9 +24,9 @@ void sendOSCtoReaper(){
   
   ////2. Glitcher
   OscMessage bypass2 = new OscMessage("/track/1/fx/2/bypass");
-  bypass2.add(btns[1].getValue()); 
+  bypass2.add(FXBtns[1].getValue()); 
   osc.send(bypass2, dst);
-  if(btns[1].getState()){
+  if(FXBtns[1].getState()){
     //Dry amount
     OscMessage glitcherDry = new OscMessage("/track/1/fx/2/fxparam/2/value");
     glitcherDry.add(knobVal[1]); 
@@ -39,9 +39,9 @@ void sendOSCtoReaper(){
   
   ////3. Reverse
   OscMessage bypass3 = new OscMessage("/track/1/fx/3/bypass");
-  bypass3.add(btns[2].getValue()); 
+  bypass3.add(FXBtns[2].getValue()); 
   osc.send(bypass3, dst);
-  if(btns[2].getState()){
+  if(FXBtns[2].getState()){
     //Wet amount: /track/1/fx/3/fxparam/1/value range:0-1
     OscMessage reverseWet = new OscMessage("/track/1/fx/3/fxparam/1/value");
     reverseWet.add(knobVal[3]); 
@@ -50,9 +50,9 @@ void sendOSCtoReaper(){
   
   ////4. Delay
   OscMessage bypass4 = new OscMessage("/track/1/fx/4/bypass");
-  bypass4.add(btns[3].getValue()); 
+  bypass4.add(FXBtns[3].getValue()); 
   osc.send(bypass4, dst);
-  if(btns[3].getState()){
+  if(FXBtns[3].getState()){
     //Wet amount
     OscMessage delayWet = new OscMessage("/track/1/fx/4/fxparam/1/value");
     delayWet.add(knobVal[4]); 
@@ -69,9 +69,9 @@ void sendOSCtoReaper(){
   
   ////5. Reverb
   OscMessage bypass5 = new OscMessage("/track/1/fx/5/bypass");
-  bypass5.add(btns[4].getValue()); 
+  bypass5.add(FXBtns[4].getValue()); 
   osc.send(bypass5, dst);
-  if(btns[4].getState()){
+  if(FXBtns[4].getState()){
     //Wet amount
     OscMessage reverbWet = new OscMessage("/track/1/fx/5/fxparam/1/value");
     reverbWet.add(knobVal[7]); 
