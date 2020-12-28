@@ -59,10 +59,6 @@ void sendTrainingOscToWekinator() {
 void sendOutputOscToWekinator() {
   OscMessage msg = new OscMessage("/wekinator/control/outputs");
   
-   for (int i=0; i<FXBtns.length; i++) {
-    msg.add((float)FXBtns[i].getValue());
-  }
-  
   for (int i=0; i<knobCCs.length; i++) {
     msg.add((float)knobVal[i]);
   }
