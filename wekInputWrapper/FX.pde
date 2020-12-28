@@ -29,3 +29,17 @@ void drawFXbtns() {
     .setPosition(x1+ 4*(2 + btnWidth), y)
     .setSize(btnWidth, btnWidth);
 }
+
+// ControlP5 will automatically detect this method and will use it to forward any controlEvent triggered by a controller
+// (Controller class is Toggle's parent)
+void controlEvent(ControlEvent theEvent) {
+  // If the event is called FX*, then send OSC to Reaper
+  // Could be done also for knobs if we create Knob controllers for them
+  try{
+    if (theEvent.getName().startsWith("FX")){
+      //maybe add: if(TrainingToggle==true)
+      sendOSCtoReaper();
+    }
+  // throws some exceptions at the beginning but then works fine, the catch block is to avoid these exceptions
+  } catch(NullPointerException e){} 
+}

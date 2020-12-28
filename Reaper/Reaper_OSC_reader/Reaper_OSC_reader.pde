@@ -38,8 +38,8 @@ void draw() {
 }
 
 void sendOsc() {
-  OscMessage msg = new OscMessage("/track/1/fx/1/fxparam/8/value"); //autotune amount
-  float  value = map(mouseX, 0, width, 0, 1);
+  OscMessage msg = new OscMessage("/track/1/fx/1/fxparam/2/value"); // see FX PARAMS LIST
+  float  value = map(mouseX, 0, width, 0.027777778, 0.3611111);
   msg.add(value); 
   oscP5.send(msg, dest);
 }
@@ -48,15 +48,46 @@ void sendOsc() {
 void oscEvent(OscMessage msg) {
  String head = msg.addrPattern();
  println(head);
- switch(head){
-   case "/track/1/fx/1/fxparam/8/value":
+ String[] parts = head.split("/");
+ switch(parts[parts.length-1]){
+   case "value":
      println("Value:", msg.get(0).floatValue());
      break;
-   case "/fxparam/last_touched/name":
+   case "bypass":
+     println("Value:", msg.get(0).floatValue());
+     break;
+   case "name":
      println(msg.get(0).stringValue());
      break;
-   case "/fxparam/last_touched/value":
-     println("Value:", msg.get(0).floatValue());
-     break;
+   //case "str":
+   //  println(msg.get(0).stringValue());
+   //  break;
  }
 }
+
+/**
+FX PARAMETERS LIST
+1. Autotune 
+Bypass: /track/1/fx/1/bypass 0/1
+Presets (scales): /track/1/fx/1/fxparam/2/value range:0.027777778-0.3611111 (chromatic + 12 major scales)
+
+2. Glitcher 
+Bypass: /track/1/fx/2/bypass 0/1
+Dry amount: /track/1/fx/2/fxparam/2/value range:0-1
+Shift (full range): /track/1/fx/2/fxparam/4/value range:0.25/1
+
+3. Reverse
+Bypass: /track/1/fx/3/bypass 0/1
+Wet amount: /track/1/fx/3/fxparam/1/value range:0-1
+
+4. Delay
+Bypass: /track/1/fx/4/bypass 0/1
+Wet amount: /track/1/fx/4/fxparam/1/value range:0-1
+Length (musical): /track/1/fx/4/fxparam/5/value range:0-0.0390625
+Feedback: /track/1/fx/4/fxparam/6/value range:0-0.55791545
+
+5. Reverb
+Bypass: /track/1/fx/5/bypass 0/1
+Wet amount: /track/1/fx/5/fxparam/1/value range:0-1
+Room size: /track/1/fx/5/fxparam/3/value range:0-1
+**/
