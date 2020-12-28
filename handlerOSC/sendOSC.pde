@@ -100,7 +100,7 @@ void sendOscWek2Reaper(OscMessage msgWek) {
    **/
   // Directly modify specific param values (as many wek ouputs as param values)
 
-  ////1. Autotunegit a
+  ////1. Autotune
   //Bypass: /track/1/fx/1/bypass 0/1
   OscMessage bypass1 = new OscMessage("/track/1/fx/1/bypass");
   bypass1.add(msgWek.get(0).floatValue());
