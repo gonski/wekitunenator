@@ -7,9 +7,10 @@ ControlP5 cp5;
 MidiBus midi;
 DropdownList midiInDropdown, midiOutDropdown;
 Textarea logArea;
+
 OscP5 osc;
-NetAddress loc;
-NetAddress dst;
+NetAddress wekAddr;
+NetAddress reaperAddr;
 
 // FX btns
 Toggle[] FXBtns = new Toggle[5];
@@ -30,9 +31,6 @@ float[] origin = new float[3];
 float[] dist = new float [20];
 boolean[] lastTrainingBtnValue = {false, false, false};
 
-// OSC wekinator ports
-int inputPort = 8008;
-int outputPort = 8000;
 
 void setup() {
   // match sketch size to default model camera setup
@@ -41,10 +39,12 @@ void setup() {
   // midi to OSC
   MidiBus.list();
 
-  osc = new OscP5(this, inputPort); //input
-  loc = new NetAddress("127.0.0.1", outputPort); // output
-  // OSC Reaper port (destination)
-  dst = new NetAddress("127.0.0.1",6449);
+  //input ports
+  osc = new OscP5(this, 8008); //messages HandPose-OSC and wek/outputs
+
+  //output ports
+  wekAddr = new NetAddress("127.0.0.1", 8000); // wekinator
+  reaperAddr = new NetAddress("127.0.0.1", 6449);   // reaper
 
 
   midi = new MidiBus(this, 0, 1);
@@ -54,7 +54,7 @@ void setup() {
   // launch("local full path to HandPose-OSC.app");
 
 
-  drawMidiOSCMenu();
+  drawMidiMenu();
   drawFXbtns();
   drawTrainingBtns();
 }
