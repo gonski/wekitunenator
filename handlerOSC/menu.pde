@@ -1,3 +1,4 @@
+
 void drawMidiMenu() {
   // from https://github.com/msfeldstein/MidiToOSCBridge/blob/master/MidiOSC.pde
 
@@ -13,13 +14,7 @@ void drawMidiMenu() {
   }
   midiInDropdown.setValue(0);
   midiInDropdown.setOpen(false);
-
-  String[] outputs = MidiBus.availableOutputs();
-  for (int i = 0; i < outputs.length; i++) {
-    midiOutDropdown.addItem(outputs[i], i);
-  }
   midiInDropdown.setValue(1);
-
 
   cp5.addButton("Update")
     .setValue(0)
@@ -47,7 +42,7 @@ public void Update() {
   if (midi != null) {
     midi.clearAll();
   }
-  midi = new MidiBus(this, (int)midiInDropdown.getValue());
+  midi = new MidiBus(this, (int)midiInDropdown.getValue(),0);
   midi.sendNoteOn(0, 44, 127);
 }
 
