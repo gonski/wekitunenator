@@ -7,10 +7,6 @@ void drawMidiMenu() {
     .setPosition(20, nextY())
     .setSize(menuWidth, 50);
 
-  midiOutDropdown = cp5.addDropdownList("midiOut")
-    .setPosition(20, nextY())
-    .setSize(menuWidth, 50);
-
   String[] inputs = MidiBus.availableInputs();
   for (int i = 0; i < inputs.length; i++) {
     midiInDropdown.addItem(inputs[i], i);
@@ -23,7 +19,7 @@ void drawMidiMenu() {
     midiOutDropdown.addItem(outputs[i], i);
   }
   midiInDropdown.setValue(1);
-  midiOutDropdown.setOpen(false);
+
 
   cp5.addButton("Update")
     .setValue(0)
@@ -51,7 +47,7 @@ public void Update() {
   if (midi != null) {
     midi.clearAll();
   }
-  midi = new MidiBus(this, (int)midiInDropdown.getValue(), (int)midiOutDropdown.getValue());
+  midi = new MidiBus(this, (int)midiInDropdown.getValue());
   midi.sendNoteOn(0, 44, 127);
 }
 
