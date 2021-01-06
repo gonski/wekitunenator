@@ -25,14 +25,20 @@ Therefore, there are four main parts:
 Watch a short demo and explanation [here](https://youtu.be/M6bAb42s-lo).
 
 ## Setup
-This system has been tested in an OS X operative system.
+This instrument has been tested in an OS X operative system.
 ### HandPose-OSC
-For the hand tracking we are using [handPoseOSC](https://github.com/faaip/HandPose-OSC) by [@faiip](https://github.com/faaip/). You will need to have [nodejs](https://nodejs.org/en/) installed. First clone the repo. Then, go to the cloned repo directory `cd HandPose-Osc.git` and install the project dependencies using yarn `yarn install`. Once you've done that you can run the app with the command `yarn start`. 
+For the hand tracking we are using [handPoseOSC](https://github.com/faaip/HandPose-OSC) by [@faiip](https://github.com/faaip/). 
+
+Double click on HandPose-OSC application. You will see a little black window, which needs to be open although you cannot interact with it. 
+
+<div style="text-align:center"><img src="./.bin/HandPose-OSC.png"/></div>
+
+This application will start processing information from your camera, to extract the points of your hand. Now you can open the OSC handler.
 
 ### OSC handler
-Double click on `handlerOSC/handlerOSC.app`, which will run a java application. If HandPose-OSC is already running, you will be able to see the points of your hand –if you are showing it to your camera– in green, on top of a black background. Something like this:
+Double click on `handlerOSC/handlerOSC.app`, which will run a java application. If HandPose-OSC is also running, you will be able to see the points of your hand –if you are showing it to your camera– in green, on top of a black background. Something like this:
 
-<div style="text-align:center"><img src="./.bin/handlerOSC.jpeg" width="500" height="458"/></div>
+<div style="text-align:center"><img src="./.bin/handlerOSC.png"/></div>
 
 Select your MIDI input device and press `UPDATE`. The FX switches are controlled by MIDI pitch indexes 0, 1, 2, 3 and 4. The REC, TRAIN and RUN buttons can be modified with MIDI pitch indexes 5, 6 and 7. 
 
@@ -41,13 +47,15 @@ You can download Wekinator [here](http://www.wekinator.org/downloads/). Once dow
 
 Find the file `wekitunenator/wekProject/WekinatorProject.wekproj` and open it.
 
-You will see these windows:
+You will see this window:
 
-<div style="text-align:center"><img src="./.bin/wekinator.png" width="600" height="545"/></div>
+<div style="text-align:center"><img src="./.bin/wekinator1.png"/></div>
 
 Click on `Start listening` without changing the input port number.
 
 You will be able to see that this Wekinator project receives 27 inputs –hand base points and the distances of the fingers to these points– and sends 13 outputs –five 0/1 integer values and eight floats, which control 5 effects in Reaper.
+
+<div style="text-align:center"><img src="./.bin/wekinator2.png"/></div>
 
 ### Reaper
 You can download Reaper [here](https://www.reaper.fm/download.php). Once it has been installed, configuration instructions can be found in this [document](./Reaper/README.md). 
