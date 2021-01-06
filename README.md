@@ -17,9 +17,10 @@ Therefore, there are four main parts:
 2. Mapping creation – Wekinator
 4. Audio and effects managing – handled by Reaper
 
-<div style="text-align:center"><img src="./.bin/simplified-pipeline.jpeg"/></div>
+<div style="text-align:center"><img src="./.bin/simplified-pipeline.jpeg" width="500" height="311"/></div>
 
-(icons created by [Eucalyp](https://thenounproject.com/eucalyp/) under CCBY license)
+<p style="text-align: center;">(icons created by <a href="https://thenounproject.com/eucalyp/">Eucalyp</a> under CCBY license)</p>
+
 
 Watch a short demo and explanation [here](https://youtu.be/M6bAb42s-lo).
 
@@ -31,7 +32,7 @@ For the hand tracking we are using [handPoseOSC](https://github.com/faaip/HandPo
 ### OSC handler
 Double click on `handlerOSC/handlerOSC.app`, which will run a java application. If HandPose-OSC is already running, you will be able to see the points of your hand –if you are showing it to your camera– in green, on top of a black background. Something like this:
 
-<div style="text-align:center"><img src="./.bin/handlerOSC.jpeg"/></div>
+<div style="text-align:center"><img src="./.bin/handlerOSC.jpeg" width="500" height="458"/></div>
 
 Select your MIDI input device and press `UPDATE`. The FX switches are controlled by MIDI pitch indexes 0, 1, 2, 3 and 4. The REC, TRAIN and RUN buttons can be modified with MIDI pitch indexes 5, 6 and 7. 
 
@@ -42,7 +43,7 @@ Find the file `wekitunenator/wekProject/WekinatorProject.wekproj` and open it.
 
 You will see these windows:
 
-<div style="text-align:center"><img src="./.bin/wekinator.png"/></div>
+<div style="text-align:center"><img src="./.bin/wekinator.png" width="600" height="545"/></div>
 
 Click on `Start listening` without changing the input port number.
 
