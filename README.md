@@ -29,18 +29,18 @@ This instrument has been tested in an OS X operative system.
 ### HandPose-OSC
 For the hand tracking we are using [handPoseOSC](https://github.com/faaip/HandPose-OSC) by [@faiip](https://github.com/faaip/). 
 
-Double click on HandPose-OSC application. You will see a little black window, which needs to be open although you cannot interact with it. 
+Double click on `HandPose-OSC` application. You will see a little black window, which needs to be open although you cannot interact with it. 
 
 <div style="text-align:center"><img src="./.bin/HandPose-OSC.png"/></div>
 
 This application will start processing information from your camera, to extract the points of your hand. Now you can open the OSC handler.
 
 ### OSC handler
-Double click on `handlerOSC/handlerOSC.app`, which will run a java application. If HandPose-OSC is also running, you will be able to see the points of your hand –if you are showing it to your camera– in green, on top of a black background. Something like this:
+Double click on `handlerOSCapp`, which will run a java application. If HandPose-OSC is also running, you will be able to see the points of your hand –if you are showing it to your camera– in green, on top of a black background. Something like this:
 
 <div style="text-align:center"><img src="./.bin/handlerOSC.png"/></div>
 
-Select your MIDI input device and press `UPDATE`. The FX switches are controlled by MIDI pitch indexes 0, 1, 2, 3 and 4. The REC, TRAIN and RUN buttons can be modified with MIDI pitch indexes 5, 6 and 7. 
+Select your MIDI input device and press `UPDATE`. The FX switches are controlled by MIDI pitch indexes 0, 1, 2, 3 and 4. The `REC`, `TRAIN` and `RUN` buttons can be modified with MIDI pitch indexes 5, 6 and 7. 
 
 ### Wekinator
 You can download Wekinator [here](http://www.wekinator.org/downloads/). Once downloaded, open the program and select `File>Open project...`. 
