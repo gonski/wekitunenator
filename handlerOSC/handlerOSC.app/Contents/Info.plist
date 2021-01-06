@@ -32,8 +32,7 @@
     <string>Created with Processing</string>
     <!-- End of the set that can be customized -->
 
-    <key>JVMRuntime</key>
-    <string>jdk1.8.0_202.jdk</string>
+    
 
     <key>JVMMainClassName</key>
     <string>handlerOSC</string>
@@ -61,7 +60,6 @@
     <key>JVMOptions</key>
     <array>
       <string>-Djna.nosys=true</string>
-      <string>-Djava.ext.dirs=$APP_ROOT/Contents/PlugIns/jdk1.8.0_202.jdk/Contents/Home/jre/lib/ext</string>
 
       <string>-Xdock:icon=$APP_ROOT/Contents/Resources/sketch.icns</string>
       <string>-Djava.library.path=$APP_ROOT/Contents/Java</string>   
