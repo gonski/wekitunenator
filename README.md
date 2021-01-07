@@ -3,7 +3,9 @@ Authors: Teresa Pelinski [@pelinski](https://github.com/pelinski) and Gonzalo Ni
 
 Wekitunenator 3000 is our final project for the Advanced Interface Design course of the Sound and Music Computing Master at the Music Technology Group, in Universitat Pompeu Fabra (Barcelona).
 
-[![Wekitunenator 3000](http://img.youtube.com/vi/M6bAb42s-lo/0.jpg)](http://www.youtube.com/watch?v=M6bAb42s-lo "Wekitunenator 3000")
+<div style="display:block;text-align:center">
+<a href="http://img.youtube.com/vi/M6bAb42s-lo/0.jpg"><img src="http://www.youtube.com/watch?v=M6bAb42s-lo"/></a>
+</div>
 
 Wekitunenator is an instrument that applies sound effects in real-time to the user's voice. The applied sound effects are selected with a MIDI controller and the parameters regulating them are modified with the user's hand movements. Machine learning is used in mapping hand movements to sound effects values. However, this instrument tries to move away from the conventional notion of machine learning (ML) as a control paradigm and intends to use ML as a discovery tool. This was inspired by Sonami and Fiebrink's paper [Reflections on Eight Years of Instrument Creation with Machine Learning](https://www.nime.org/proceedings/2020/nime2020_paper45.pdf), presented in NIME 2020.
 
@@ -11,7 +13,7 @@ For modeling the mappings between hand positions and effects parameters, Wekinat
 
 The hand positions are tracked by a lightweight version of [@faiip](https://github.com/faaip/)'s [handPose-OSC](https://github.com/faaip/HandPose-OSC). The code can be found [here](https://github.com/gonski/HandPose-OSC). The communication between this model, the MIDI controller, Wekinator, and the Digital Audio Workstation (Reaper) is handled by the Processing sketch `handleOSC`. 
 ## Pipeline
-<div style="text-align:center"><img src="./.bin/pipeline.jpeg"/></div>
+<div style="display:block;text-align:center"><img src="./.bin/pipeline.jpeg"/></div>
 
 ## Setup
 Tested in MacOS Catalina [10.15.7].
