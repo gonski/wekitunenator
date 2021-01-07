@@ -3,9 +3,7 @@ Authors: Teresa Pelinski [@pelinski](https://github.com/pelinski) and Gonzalo Ni
 
 Wekitunenator 3000 is our final project for the Advanced Interface Design course of the Sound and Music Computing Master at the Music Technology Group, in Universitat Pompeu Fabra (Barcelona).
 
-<div style="display:block;text-align:center">
-<a href="http://img.youtube.com/vi/M6bAb42s-lo/0.jpg"><img src="http://www.youtube.com/watch?v=M6bAb42s-lo"/></a>
-</div>
+[![Wekitunenator 3000](http://img.youtube.com/vi/M6bAb42s-lo/0.jpg)](http://www.youtube.com/watch?v=M6bAb42s-lo "Wekitunenator 3000")
 
 Wekitunenator is an instrument that applies sound effects in real-time to the user's voice. The applied sound effects are selected with a MIDI controller and the parameters regulating them are modified with the user's hand movements. Machine learning is used in mapping hand movements to sound effects values. However, this instrument tries to move away from the conventional notion of machine learning (ML) as a control paradigm and intends to use ML as a discovery tool. This was inspired by Sonami and Fiebrink's paper [Reflections on Eight Years of Instrument Creation with Machine Learning](https://www.nime.org/proceedings/2020/nime2020_paper45.pdf), presented in NIME 2020.
 
