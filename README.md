@@ -9,7 +9,7 @@ Wekitunenator is an instrument that applies sound effects in real-time to the us
 
 In order to model the mappings between hand positions and effects parameters, Wekinator is used. The model can be trained directly using the MIDI controller by selecting the effects (with buttons) and the parameters values (with knobs) and hitting on the `REC` button. The `REC`, `TRAIN` and `RUN` buttons control the MIDI interface (if no MIDI controller is available, the buttons in the screen interface can also be controlled with the mouse). This way, the user can dynamically train and use the model without having to use the keyboard or mouse. When running the model on unseen combinations of effects, the mappings and hence, the resulting sounds, will be unpredictable.
 
-The hand positions are tracked by a lightweight version of [@faiip](https://github.com/faaip/)'s [handPose-OSC](https://github.com/faaip/HandPose-OSC). The code can be found [here](https://github.com/gonski/HandPose-OSC). The communication between this model, the MIDI controller, Wekinator, and the Digital Audio Workstation (Reaper) is handled by the Processing sketch `handlerOSC`. 
+The hand positions are tracked from a live videostream by a lightweight version of [@faiip](https://github.com/faaip/)'s [handPose-OSC](https://github.com/faaip/HandPose-OSC). The code can be found [here](https://github.com/gonski/HandPose-OSC). The communication between this model, the MIDI controller, Wekinator, and the Digital Audio Workstation (Reaper) is handled by the Processing sketch `handlerOSC`. 
 ## Pipeline
 <div style="display:block;text-align:center"><img src="./.bin/pipeline.jpeg"/></div>
 
