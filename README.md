@@ -1,5 +1,5 @@
 # Wekitunenator 3000
-Authors: Teresa Pelinski [@pelinski](https://github.com/pelinski) and Gonzalo Nieto [@gonznm](https://github.com/gonznm).
+Authors: Gonzalo Nieto [@gonznm](https://github.com/gonznm) and Teresa Pelinski [@pelinski](https://github.com/pelinski).
 
 Wekitunenator 3000 is our final project for the Advanced Interface Design course of the Sound and Music Computing Master at the Music Technology Group, in Universitat Pompeu Fabra (Barcelona).
 
